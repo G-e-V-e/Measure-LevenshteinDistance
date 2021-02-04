@@ -21,5 +21,5 @@ Examples:
     Measure-LevenshteinDistance 'test' 'Hello'
     4
     
-    Measure-LevenshteinDistance 'test' 'tests' -Percent
+    Measure-LevenshteinDistance 'test' 'testx' -Percent
     20
