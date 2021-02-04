@@ -11,11 +11,15 @@ Differences between capital and small letters can be ignored with the -IgnoreCas
 If you're interested in the percentage of required changes (relative to the longest string) rather than the number of changes, use the -Percent switch.
 
 Examples:
+
     Measure-LevenshteinDistance -First 'test' -Second 'Testx'
     2
+    
     Measure-LevenshteinDistance -First 'test' -Second 'Testx' -IgnoreCase
     1
+    
     Measure-LevenshteinDistance 'test' 'Hello'
     4
+    
     Measure-LevenshteinDistance 'test' 'tests' -Percent
     20
