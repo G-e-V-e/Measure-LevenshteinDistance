@@ -66,19 +66,15 @@ $Dist = New-Object -Type 'int[,]' -arg ($Len1+1),($Len2+1)
 for	($i = 0; $i -le $Len1; $i++) 	{$Dist[$i,0] = $i}
 for	($j = 0; $j -le $Len2; $j++) 	{$Dist[0,$j] = $j}
  
-$Cost = 0
 for	($i = 1; $i -le $Len1;$i++)
 	{for	($j = 1; $j -le $len2;$j++)
 			{
-			if		($Second[$j-1] -ceq $First[$i-1])
-					{$Cost = 0}
-			else	{$Cost = 1}
+			$Cost = @(0,1)[($Second[$j-1] -cne $First[$i-1])]
 			# The value going into the cell is the min of 3 possibilities:
 			# 1. The cell immediately above plus 1
 			# 2. The cell immediately to the left plus 1
 			# 3. The cell diagonally above and to the left plus the 'cost'
-			$TempMin = [System.Math]::Min(([int]$Dist[($i-1),$j]+1),([int]$Dist[$i,($j-1)]+1))
-			$Dist[$i,$j] = [System.Math]::Min($TempMin,([int]$Dist[($i-1),($j-1)]+$Cost))
+			$Dist[$i,$j] = [System.Math]::Min([System.Math]::Min(($Dist[($i-1),$j]+1),($Dist[$i,($j-1)]+1)),($Dist[($i-1),($j-1)]+$Cost))
 			}
 	}
 
