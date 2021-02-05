@@ -69,7 +69,7 @@ for	($j = 0; $j -le $Len2; $j++) 	{$Dist[0,$j] = $j}
 for	($i = 1; $i -le $Len1;$i++)
 	{for	($j = 1; $j -le $len2;$j++)
 			{
-			$Cost = @(0,1)[($Second[$j-1] -cne $First[$i-1])]
+			$Cost = ($Second[$j-1] -cne $First[$i-1])
 			# The value going into the cell is the min of 3 possibilities:
 			# 1. The cell immediately above plus 1
 			# 2. The cell immediately to the left plus 1
